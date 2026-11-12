@@ -1,3 +1,3 @@
 // ใส่ลิงก์ Web app ของ Google Apps Script (ลงท้ายด้วย /exec) ระหว่างเครื่องหมาย ' '
 // วิธีได้ลิงก์: ดู README.md ขั้นตอนที่ 1
-window.UNO_API_URL = '';
+window.UNO_API_URL = 'https://script.google.com/macros/s/AKfycbwT9FSveKMxiLU8vqVfkO9-8ZbV5YuTUt_NVt-ZMYJ_vcblkT1eKJDsuguI3-0WDH8nXw/exec';
