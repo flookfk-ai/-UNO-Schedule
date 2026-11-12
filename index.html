@@ -357,7 +357,7 @@ window.__UNO_WEBAPP = true;
     try {
       const res = await fetch(API, { method: 'POST', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ op: op, token: token, args: args || {} }) });
       t = await res.text();
-    } catch (e) { throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่'); }
+    } catch (e) { throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ · ลองเปิดลิงก์ใน config.js โดยตรง ต้องเห็น {"ok":true} ถ้าเห็นหน้าล็อกอิน Google หรือหน้า error ให้ Deploy ใหม่เป็น Web app แบบ Anyone (New version)'); }
     let r; try { r = JSON.parse(t); } catch (e) { throw new Error('เซิร์ฟเวอร์ตอบกลับไม่ถูกต้อง (ตรวจว่า Deploy เป็น Web app แบบ Anyone แล้ว)'); }
     if (r.error) { const e = new Error(r.error); e.auth = r.auth; if (r.auth && op !== 'login' && op !== 'load') expired(r.error); throw e; }
     return r;
