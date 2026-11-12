@@ -325,7 +325,7 @@ body.locked #login{display:grid}
 .logout:hover{color:var(--fg);background:var(--head-on)}
 </style>
 </head>
-<body class="locked">
+<body class="locked webapp">
 <div id="login" role="main"></div>
 <header>
   <div class="wrap gut">
@@ -339,8 +339,155 @@ body.locked #login{display:grid}
 <main class="wrap gut" id="main"></main>
 <nav class="tabbar" id="tabbar" aria-label="เมนู"></nav>
 <div class="toast" id="toast" role="status" hidden></div>
+<script src="config.js"></script>
 <script>
-const BASE_EMPS = [{"id":"200004","nick":"Dao","name":"กาญจนา เชาว์ไว","bcode":"CLP","bname":"Central Ladprao","pos":"Senior Runner","active":true},{"id":"200008","nick":"My","name":"ธญาอนันต์ ตุเออะ","bcode":"WNS","bname":"Wannasorn Building","pos":"Senior Store Manager","active":true},{"id":"200010","nick":"Am","name":"ศินาพร พรมเมือง","bcode":"MJR","bname":"Major Ratchayothin","pos":"Senior Barista","active":true},{"id":"200014","nick":"May","name":"ยุวดี จินดา","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200015","nick":"Ton Oak","name":"ศุภกร บูชา","bcode":"MJR","bname":"Major Ratchayothin","pos":"Store manager","active":true},{"id":"200017","nick":"Loktan","name":"ปิยธิดา มั่นทอง","bcode":"MJR","bname":"Major Ratchayothin","pos":"Barista","active":true},{"id":"200023","nick":"Kanan","name":"พุทธชาด ปัทถาพงษ์","bcode":"MJR","bname":"Major Ratchayothin","pos":"Barista","active":true},{"id":"200024","nick":"Por","name":"รุ่งรัตน์ ถนอมวงษ์","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200025","nick":"J","name":"กัญชพร รุจิโรจน์จินดากุล","bcode":"CR9","bname":"Central Rama 9","pos":"Barista","active":true},{"id":"200027","nick":"Chicha","name":"ชิชญา อ่อนคำ","bcode":"CR9","bname":"Central Rama 9","pos":"Senior Barista","active":true},{"id":"200034","nick":"Te","name":"กฤษฎา อาจยางคำ","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200037","nick":"Khing","name":"อัจฉรา บุมาพรหม","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200040","nick":"Oh","name":"แพรววาว ไชยราช","bcode":"CWO","bname":"The Offices at Central World","pos":"Barista","active":true},{"id":"200045","nick":"Fang","name":"เกวลิน ยอดสุวรรณ","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200046","nick":"Fronz","name":"เอกราช ศิริ","bcode":"ASP","bname":"All Seasons Place","pos":"Barista","active":true},{"id":"200055","nick":"Bow","name":"ศศิมา ตาวันดี","bcode":"SCS","bname":"Seacon Square Srinakarin","pos":"Barista","active":true},{"id":"200057","nick":"Som","name":"สุปวีณ์ ชัยถา","bcode":"CWO","bname":"The Offices at Central World","pos":"Barista","active":true},{"id":"200061","nick":"Kan","name":"สงกรานต์ ดวงจินดา","bcode":"SCT","bname":"Siam Center","pos":"Barista","active":true},{"id":"200063","nick":"Ing","name":"กิตติ์ธเนศ อุดมอมรรัตน์","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200064","nick":"Ice","name":"สิริศักดิ์ กิจวิทยี","bcode":"CWO","bname":"The Offices at Central World","pos":"Senior Barista","active":true},{"id":"200065","nick":"Bluewef","name":"จิรนัย เอตติยัติ","bcode":"WNS","bname":"Wannasorn Building","pos":"Barista","active":true},{"id":"200066","nick":"Pang","name":"บุษกร หอมจันทร์","bcode":"MJR","bname":"Major Ratchayothin","pos":"Senior Barista","active":true},{"id":"200068","nick":"PP","name":"สหมงคล ชมภู่","bcode":"WNS","bname":"Wannasorn Building","pos":"Senior Barista","active":true},{"id":"200072","nick":"Sky","name":"ณัฐวุฒิ ฉันวิจิต","bcode":"CPK","bname":"Central Pinklao","pos":"Barista","active":true},{"id":"200073","nick":"TJ","name":"ธีระพงศ์ โอสมบัติ","bcode":"EMP","bname":"Empire Tower","pos":"Store manager","active":true},{"id":"200074","nick":"Nes","name":"นันทภพ ชิตเพ็ง","bcode":"GEM","bname":"Gateway Ekamai","pos":"Supervisor","active":true},{"id":"200075","nick":"Boom","name":"วิศรุค คล้อยเจริญ","bcode":"CR9","bname":"Central Rama 9","pos":"Barista","active":true},{"id":"200079","nick":"Bass","name":"ภาราดร วิเศษหมื่น","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200080","nick":"Num","name":"ธนากร วิลาจันทร์","bcode":"CLP","bname":"Central Ladprao","pos":"Senior Barista","active":true},{"id":"200086","nick":"Baiyok","name":"จารุวรรณ สุขใส","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200089","nick":"Kratay","name":"ณิชาวีร์ นันทพิรักษณ์","bcode":"CKC","bname":"Central Kitchen","pos":"พนักงานครัวกลาง","active":true},{"id":"200096","nick":"Mint","name":"NAN LIN HSENG -","bcode":"CPK","bname":"Central Pinklao","pos":"Barista","active":true},{"id":"200100","nick":"Mint","name":"จินตนา สกุณา","bcode":"MJR","bname":"Major Ratchayothin","pos":"Barista","active":true},{"id":"200103","nick":"Jen","name":"เจนจิรา พิมพ์แน่น","bcode":"CKC","bname":"Central Kitchen","pos":"พนักงานครัวกลาง","active":true},{"id":"200104","nick":"Pay","name":"เจนณรงค์ ชินศรี","bcode":"CPK","bname":"Central Pinklao","pos":"Barista","active":true},{"id":"200105","nick":"Fah","name":"อนัญพร พุทธพงษ์","bcode":"CKC","bname":"Central Kitchen","pos":"หัวหน้าครัวกลาง","active":true},{"id":"200107","nick":"Gun","name":"กฤตภัค พะวงศ์","bcode":"CWO","bname":"The Offices at Central World","pos":"Senior Barista","active":true},{"id":"200112","nick":"Mildmint","name":"ศศิกานต์ สุขมา","bcode":"CWG","bname":"Central Westgate","pos":"Barista","active":true},{"id":"200116","nick":"Plai","name":"ปรัชญา วารี","bcode":"DCP","bname":"Dusit Central Park","pos":"Store manager","active":true},{"id":"200121","nick":"Tonkhao","name":"จิตติมา สาระพันธุ์","bcode":"MTA","bname":"Midtown Asoke","pos":"Senior Barista","active":true},{"id":"200128","nick":"Kit","name":"นารีกิต อาเก็ม","bcode":"BKP","bname":"The Mall Bangkapi","pos":"Barista","active":true},{"id":"200129","nick":"Bass","name":"ธรรมรัต ผัดขัน","bcode":"CR2","bname":"Central Rama 2","pos":"Barista","active":true},{"id":"200132","nick":"Mook","name":"อลีนา พานิชการ","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200135","nick":"Aon","name":"อ้น ขวัญยืน","bcode":"MTA","bname":"Midtown Asoke","pos":"Store manager","active":true},{"id":"200142","nick":"Ben","name":"เบญญาภา เจตนะ","bcode":"CR2","bname":"Central Rama 2","pos":"Barista","active":true},{"id":"200144","nick":"Kwang","name":"ณราภัทร์ กิจเพียร","bcode":"CR2","bname":"Central Rama 2","pos":"Store manager","active":true},{"id":"200148","nick":"Kan","name":"กมลชนก มัณฑุกานนท์","bcode":"SCS","bname":"Seacon Square Srinakarin","pos":"Barista","active":true},{"id":"200150","nick":"Baifern","name":"นิรชา จันทะคัด","bcode":"EMP","bname":"Empire Tower","pos":"Barista","active":true},{"id":"200152","nick":"Noolek","name":"นารีรัตน์ คำแดงสด","bcode":"CR2","bname":"Central Rama 2","pos":"Barista","active":true},{"id":"200153","nick":"Fai","name":"สาริศา พลเยี่ยม","bcode":"EMP","bname":"Empire Tower","pos":"Senior Barista","active":true},{"id":"200157","nick":"Namsom","name":"ศิริยาพร ศิริสุข","bcode":"MJR","bname":"Major Ratchayothin","pos":"Barista","active":true},{"id":"200159","nick":"Golf","name":"พัฐจักร แสงอาทิตย์เจริญ","bcode":"CR2","bname":"Central Rama 2","pos":"Senior Barista","active":true},{"id":"200161","nick":"Pat","name":"พาสมี หามะ","bcode":"BKP","bname":"The Mall Bangkapi","pos":"Barista","active":true},{"id":"200163","nick":"Again","name":"ธันยพร คำพานิชย์","bcode":"EMP","bname":"Empire Tower","pos":"Barista","active":true},{"id":"200174","nick":"Khao Jao","name":"อารยา จงกาล","bcode":"DCP","bname":"Dusit Central Park","pos":"Barista","active":true},{"id":"200176","nick":"M","name":"ณัฐพงศ์ เย็นสมใจ","bcode":"CR9","bname":"Central Rama 9","pos":"Barista","active":true},{"id":"200179","nick":"Pin","name":"วาสนา ชื่นชมกิตติกุล","bcode":"CKC","bname":"Central Kitchen","pos":"พนักงานครัวกลาง","active":true},{"id":"200180","nick":"Jack","name":"ภานุพงษ์ บุญกิริยาวัติ","bcode":"EMP","bname":"Empire Tower","pos":"Barista","active":true},{"id":"200182","nick":"Prao","name":"ชุติมา หมื่นแก้ว","bcode":"CR9","bname":"Central Rama 9","pos":"Barista","active":true},{"id":"200183","nick":"Nawaf","name":"กฤษฎา มัสเยาะ","bcode":"EMP","bname":"Empire Tower","pos":"Barista","active":true},{"id":"200186","nick":"Jem","name":"จิรายุ หนุนแหลมทอง","bcode":"CR9","bname":"Central Rama 9","pos":"Senior Barista","active":true},{"id":"200189","nick":"Mol","name":"กมลชนก ปัจจุสมัย","bcode":"TH49","bname":"Townhall 49","pos":"Store manager","active":true},{"id":"200190","nick":"Arm","name":"ชยธร รัตนกสิกร","bcode":"CPK","bname":"Central Pinklao","pos":"Barista","active":true},{"id":"200191","nick":"Dream","name":"วริศรา ปิยะวาณิชย์สกุล","bcode":"NWW","bname":"The Mall Ngamwongwan","pos":"Barista Runner","active":true},{"id":"200194","nick":"Got","name":"สุกิจ ลีรคมสัน","bcode":"CWG","bname":"Central Westgate","pos":"Barista","active":true},{"id":"200198","nick":"Blue","name":"คณิศร สาครพานิช","bcode":"MTA","bname":"Midtown Asoke","pos":"Barista","active":true},{"id":"200199","nick":"Anya","name":"อารียา พันชั่ง","bcode":"MTA","bname":"Midtown Asoke","pos":"Barista","active":true},{"id":"200202","nick":"Moji","name":"กนกพร สวัสดิรัตน์","bcode":"MTA","bname":"Midtown Asoke","pos":"Barista","active":true},{"id":"200204","nick":"Kik","name":"อาทิตยา หาญแก้ว","bcode":"CR2","bname":"Central Rama 2","pos":"Barista","active":true},{"id":"200206","nick":"Tan","name":"ชลธิศ เขียนวิจิตร","bcode":"CWG","bname":"Central Westgate","pos":"Barista","active":true},{"id":"200208","nick":"New","name":"ชนิตา บุตรแก้ว","bcode":"CNV","bname":"Central Northville","pos":"Senior Barista","active":true},{"id":"200209","nick":"Phet","name":"ภัทรพล พรมกุดตุ้ม","bcode":"CWG","bname":"Central Westgate","pos":"Barista","active":true},{"id":"200210","nick":"Cherry","name":"จิรัชญา พุ่มโพธิงาม","bcode":"NWW","bname":"The Mall Ngamwongwan","pos":"Barista","active":true},{"id":"200211","nick":"Pare","name":"พลอยพรรณ แซ่จิว","bcode":"CNV","bname":"Central Northville","pos":"Barista","active":true},{"id":"200212","nick":"Alif","name":"อับดุลอลิฟ หมันอิ","bcode":"TH49","bname":"Townhall 49","pos":"Barista","active":true},{"id":"200215","nick":"Sun","name":"ผดุงศักดิ์ ครองยศ","bcode":"DCP","bname":"Dusit Central Park","pos":"Barista","active":true},{"id":"200216","nick":"Max","name":"วรพจน์ มณีคันธวงศ์","bcode":"MTA","bname":"Midtown Asoke","pos":"Barista","active":true},{"id":"200217","nick":"bas","name":"บัชรี มาศโอสถ","bcode":"DCP","bname":"Dusit Central Park","pos":"Barista","active":true},{"id":"200219","nick":"Q","name":"วัชพล มาประสม","bcode":"DCP","bname":"Dusit Central Park","pos":"Barista","active":true},{"id":"200220","nick":"Bm","name":"ธนบูลย์ เอื้อมงคลชัย","bcode":"CPK","bname":"Central Pinklao","pos":"Store manager","active":true},{"id":"200221","nick":"Pae","name":"สุกัญญา จันทร์ดี","bcode":"DCP","bname":"Dusit Central Park","pos":"Barista","active":true},{"id":"200224","nick":"Nan","name":"ปภัสสร ทองแจ่ม","bcode":"SCT","bname":"Siam Center","pos":"Barista","active":true},{"id":"200225","nick":"Nune","name":"เบญจมาศ แดงประเสริฐ","bcode":"TH49","bname":"Townhall 49","pos":"Barista","active":true},{"id":"200226","nick":"Bungearn","name":"นฤนาถ สะอาด","bcode":"SCT","bname":"Siam Center","pos":"Senior Barista","active":true},{"id":"200228","nick":"Aom","name":"นิศานาถ มีหอม","bcode":"WNS","bname":"Wannasorn Building","pos":"Barista","active":true},{"id":"200229","nick":"Beam","name":"บัณฑิตา อยู่ครอบ","bcode":"TH49","bname":"Townhall 49","pos":"Senior Barista","active":true},{"id":"200230","nick":"Art","name":"ธนวัฒน์ ศรีมาลา","bcode":"TH49","bname":"Townhall 49","pos":"Barista","active":true},{"id":"200236","nick":"Music","name":"นิรชา ซุ่นฮวด","bcode":"MJR","bname":"Major Ratchayothin","pos":"Barista","active":true},{"id":"200237","nick":"Nan","name":"อมรรัตน์ มาเลิศ","bcode":"ASP","bname":"All Seasons Place","pos":"Barista","active":true},{"id":"200241","nick":"Na","name":"ฮาซานาห์ ปิ่นทอง","bcode":"TH49","bname":"Townhall 49","pos":"Barista","active":true},{"id":"200243","nick":"Fia","name":"ปาลิตา จันทร์ศรี","bcode":"DCP","bname":"Dusit Central Park","pos":"Barista","active":true},{"id":"200244","nick":"Tae","name":"บูรพา พิทยาอนุสาสน์","bcode":"CWG","bname":"Central Westgate","pos":"Barista","active":true},{"id":"200247","nick":"Ning","name":"ภัทรานิษฐ์ ดวงแก้ว","bcode":"WNS","bname":"Wannasorn Building","pos":"Barista","active":true},{"id":"200249","nick":"Mint","name":"ศศิวิมล พิมพา","bcode":"ASP","bname":"All Seasons Place","pos":"Barista","active":true},{"id":"200254","nick":"Kookkai","name":"ศุทธิณี ฉันทวี","bcode":"MCB","bname":"Maneeya Center Building","pos":"Barista","active":true},{"id":"200255","nick":"Tong","name":"อริศรา จิตธรรม","bcode":"DCP","bname":"Dusit Central Park","pos":"Barista","active":true},{"id":"200256","nick":"Fluk","name":"นวคุณ มหาวงค์ทอง","bcode":"SCS","bname":"Seacon Square Srinakarin","pos":"Barista","active":true},{"id":"200258","nick":"T","name":"ธีรติ วายทุกข์","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200260","nick":"Naming","name":"จารุกัญญ์ ทองหล่อ","bcode":"WNS","bname":"Wannasorn Building","pos":"Barista","active":true},{"id":"200261","nick":"Mild","name":"ศศิวรรณ พิมพา","bcode":"MCB","bname":"Maneeya Center Building","pos":"Barista","active":true},{"id":"200262","nick":"Earth","name":"ธนกร หมื่นรวย","bcode":"TH49","bname":"Townhall 49","pos":"Barista","active":true},{"id":"200263","nick":"Non","name":"ชานนท์ พรธนากุล","bcode":"MCB","bname":"Maneeya Center Building","pos":"Barista","active":true},{"id":"200264","nick":"Boat","name":"ธนิต พรหมรส","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200266","nick":"K","name":"จิรพัส มานะ","bcode":"ASP","bname":"All Seasons Place","pos":"Barista","active":true},{"id":"200267","nick":"Kay","name":"นราพร พิมนนอก","bcode":"SCS","bname":"Seacon Square Srinakarin","pos":"Barista","active":true},{"id":"200269","nick":"Fang","name":"วงศ์รวี อินทร์สุข","bcode":"CLP","bname":"Central Ladprao","pos":"Barista","active":true},{"id":"200272","nick":"Tidte","name":"ศรัญยา กะแก้ว","bcode":"SCS","bname":"Seacon Square Srinakarin","pos":"Barista","active":true},{"id":"200275","nick":"Fah","name":"ชลธิชา ประธรรมโย","bcode":"CWO","bname":"The Offices at Central World","pos":"Barista","active":true},{"id":"200280","nick":"Mint","name":"พรรณภัสสา เลิศจำรัสไพศาล","bcode":"SCS","bname":"Seacon Square Srinakarin","pos":"Barista","active":true},{"id":"200284","nick":"Tee","name":"ณัฐกรณ์ นุตาคม","bcode":"CPK","bname":"Central Pinklao","pos":"Barista","active":true},{"id":"200285","nick":"L","name":"ณัฏฐณิชา ณ ดารา","bcode":"SCS","bname":"Seacon Square Srinakarin","pos":"Barista","active":true},{"id":"200290","nick":"Max","name":"วัชระ ไชยศรี","bcode":"EMQ","bname":"Emquartier","pos":"Barista","active":true},{"id":"200291","nick":"View","name":"ณัฐพล วิไลเลิศ","bcode":"EMQ","bname":"Emquartier","pos":"Barista","active":true},{"id":"200292","nick":"Irin","name":"ยามีละห์ อับดุลบารี","bcode":"EMQ","bname":"Emquartier","pos":"Barista","active":true},{"id":"200294","nick":"Bam","name":"ชนิษฐา กังสดารพร","bcode":"MCB","bname":"Maneeya Center Building","pos":"Store manager","active":true},{"id":"200297","nick":"K","name":"สุชญา กีรตินันท์วัฒนา","bcode":"DCP","bname":"Dusit Central Park","pos":"Barista","active":true},{"id":"200298","nick":"Nan","name":"นิตติยา ทรงชัยพรรณา","bcode":"SCS","bname":"Seacon Square Srinakarin","pos":"Barista","active":true},{"id":"200299","nick":"Lookmoo","name":"วัชรภร พึ่งญาติ","bcode":"EMQ","bname":"Emquartier","pos":"Barista","active":true},{"id":"200302","nick":"Phu","name":"ภูรินท์ เขียวอ่อน","bcode":"CWO","bname":"The Offices at Central World","pos":"Barista","active":true},{"id":"200305","nick":"Phu","name":"วรวุฒิ เอกทัศน์","bcode":"EMQ","bname":"Emquartier","pos":"Barista","active":true},{"id":"500002","nick":"Wayo","name":"ชัยสกุล แซ่โซ้ง","bcode":"CPK","bname":"Central Pinklao","pos":"Trainee","active":true},{"id":"500007","nick":"Namtan","name":"สุจิตรา ระวิวรรณ์","bcode":"CLP","bname":"Central Ladprao","pos":"Trainee","active":true},{"id":"500009","nick":"Tor","name":"ชยพล แซ่ย่าง","bcode":"CWO","bname":"The Offices at Central World","pos":"Trainee","active":true},{"id":"500010","nick":"Em","name":"วรรนิษา นิลบรรพต","bcode":"CWO","bname":"The Offices at Central World","pos":"Trainee","active":true},{"id":"500011","nick":"Mol","name":"มณฑิตา วาจาสัจกุล","bcode":"CWO","bname":"The Offices at Central World","pos":"Trainee","active":true},{"id":"500013","nick":"Mee","name":"ศศิธร วงศ์วีนะชาติ","bcode":"CLP","bname":"Central Ladprao","pos":"Trainee","active":true},{"id":"500018","nick":"Yu","name":"ศรายุธ แซ่ม้า","bcode":"CPK","bname":"Central Pinklao","pos":"Trainee","active":true},{"id":"500020","nick":"Rain","name":"สุเรนทร วิจิตรบรรเจิด","bcode":"MTA","bname":"Midtown Asoke","pos":"Trainee","active":true}];
+// ---- UNO web (GitHub Pages) : เชื่อมหน้าเว็บกับเซิร์ฟเวอร์ Google Apps Script ผ่าน fetch ----
+window.__UNO_WEBAPP = true;
+(function () {
+  const TK = 'uno_tok', POLL_MS = 12000;
+  let token = null; try { token = localStorage.getItem(TK); } catch (e) {}
+  let ME = null, VER = 0, URL_ = '', pollT = null, busy = false;
+  const DOCS = {}, LIS = [];
+  const clone = o => o == null ? o : JSON.parse(JSON.stringify(o));
+
+  const API = (window.UNO_API_URL || '').trim();
+  async function call(op, args) {
+    if (!API) throw new Error('ยังไม่ได้ตั้งค่า UNO_API_URL ในไฟล์ config.js');
+    let t;
+    try {
+      const res = await fetch(API, { method: 'POST', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ op: op, token: token, args: args || {} }) });
+      t = await res.text();
+    } catch (e) { throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่'); }
+    let r; try { r = JSON.parse(t); } catch (e) { throw new Error('เซิร์ฟเวอร์ตอบกลับไม่ถูกต้อง (ตรวจว่า Deploy เป็น Web app แบบ Anyone แล้ว)'); }
+    if (r.error) { const e = new Error(r.error); e.auth = r.auth; if (r.auth && op !== 'login' && op !== 'load') expired(r.error); throw e; }
+    return r;
+  }
+  function snap(path) { const d = DOCS[path]; return { id: path.split('/').pop(), exists: d !== undefined && d !== null, data: () => clone(d) }; }
+  function inCol(l, p) { const pre = l.name + '/'; return p.indexOf(pre) === 0 && p.indexOf('/', pre.length) < 0; }
+  function fire(l) {
+    try {
+      if (l.type === 'doc') l.cb(snap(l.path));
+      else l.cb({ docs: Object.keys(DOCS).filter(p => inCol(l, p) && DOCS[p] && (!l.where || l.where[1].indexOf(DOCS[p][l.where[0]]) >= 0)).map(snap) });
+    } catch (e) { console.error(e); }
+  }
+  function notify(paths) { LIS.slice().forEach(l => { if (l.type === 'doc' ? paths.indexOf(l.path) >= 0 : paths.some(p => inCol(l, p))) fire(l); }); }
+  function listen(l) { LIS.push(l); setTimeout(() => fire(l), 0); return () => { const i = LIS.indexOf(l); if (i >= 0) LIS.splice(i, 1); }; }
+  function apply(r) {
+    if (r.me) ME = r.me;
+    if (r.url) URL_ = r.url;
+    const docs = r.docs || {}, changed = Object.keys(docs);
+    changed.forEach(p => { DOCS[p] = docs[p]; });
+    if (r.ver) VER = Math.max(VER, r.ver);
+    if (changed.length) notify(changed);
+  }
+  function docRef(path) {
+    return {
+      get: async () => snap(path),
+      set: async data => {
+        const had = Object.prototype.hasOwnProperty.call(DOCS, path), old = DOCS[path];
+        DOCS[path] = clone(data); notify([path]);
+        try { const r = await call('set', { path: path, data: data }); VER = Math.max(VER, r.ver || 0); if (r.doc) { DOCS[path] = r.doc; notify([path]); } }
+        catch (e) { if (had) DOCS[path] = old; else delete DOCS[path]; notify([path]); throw e; }
+      },
+      onSnapshot: (cb, err) => listen({ type: 'doc', path: path, cb: cb }),
+    };
+  }
+  const db = {
+    doc: docRef,
+    collection: name => ({
+      doc: id => docRef(name + '/' + id),
+      onSnapshot: (cb, err) => listen({ type: 'col', name: name, cb: cb }),
+      where: (f, op, vals) => ({ onSnapshot: (cb, err) => listen({ type: 'col', name: name, where: [f, vals || []], cb: cb }) }),
+    }),
+  };
+  function staffName(id) {
+    const m = DOCS['config/master']; let list = m && Array.isArray(m.staff) ? m.staff : []; if (!list.length) { try { list = BASE_EMPS; } catch (e) {} }
+    const s = list.find(x => String(x.id) === String(id));
+    return s ? (s.nick || s.name) : String(id);
+  }
+  const user = {
+    isOwner: async () => !!ME && ME.role === 'super',
+    canEdit: async () => !!ME && ME.role !== 'viewer',
+    id: async () => ME ? ME.emp : null,
+    me: async () => ME ? { id: ME.emp, name: ME.name, email: null } : null,
+    profiles: async ids => { const o = {}; (ids || []).forEach(i => { o[i] = { name: staffName(i) }; }); return o; },
+  };
+  const downloads = {
+    save: async ({ filename, data }) => {
+      const blob = data instanceof Blob ? data : new Blob([data]);
+      const u = URL.createObjectURL(blob), a = document.createElement('a');
+      a.href = u; a.download = filename; a.rel = 'noopener'; document.body.appendChild(a); a.click();
+      setTimeout(() => { URL.revokeObjectURL(u); a.remove(); }, 5000);
+    },
+  };
+  window.claude = { use: async n => n === 'db' ? db : n === 'user' ? user : n === 'downloads' ? downloads : null };
+
+  async function poll() {
+    if (busy || document.hidden || !token) return;
+    busy = true;
+    try { apply(await call('poll', { since: VER })); } catch (e) {} finally { busy = false; }
+  }
+  function startPoll() {
+    clearInterval(pollT); pollT = setInterval(poll, POLL_MS);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) poll(); });
+  }
+  function goTop() { location.reload(); }
+  function expired(msg) {
+    try { localStorage.removeItem(TK); } catch (e) {}
+    token = null; clearInterval(pollT);
+    alert(msg || 'กรุณาเข้าสู่ระบบอีกครั้ง'); goTop();
+  }
+  window.__unoLogout = () => {
+    call('logout').catch(() => {}).then(() => { token = null; try { localStorage.removeItem(TK); } catch (e) {} clearInterval(pollT); goTop(); });
+  };
+  window.__unoImport = async docs => { const r = await call('import', { docs: docs }); apply(r); return r.count; };
+
+  // ---- หน้าเข้าสู่ระบบ ----
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+  function loginView(err, emp, busyNow) {
+    const L = document.getElementById('login'); const logo = (document.getElementById('brandLogo') || {}).src || '';
+    document.body.classList.add('locked');
+    L.innerHTML = `<div class="lg"><div class="lg-brand"><img src="${logo}" alt="UNO! Coffee Company"><h1>ตารางกะพนักงาน</h1><p>เข้าสู่ระบบด้วยรหัสพนักงานและ PIN</p></div>
+      <form class="lg-card" id="lgForm" autocomplete="on">
+        ${err ? `<div class="lg-err" role="alert">${esc(err)}</div>` : ''}
+        <label>รหัสพนักงาน<input id="lgEmp" inputmode="numeric" autocomplete="username" placeholder="เช่น 200046" value="${esc(emp || '')}" ${busyNow ? 'disabled' : ''}></label>
+        <label>PIN<input id="lgPin" type="password" inputmode="numeric" autocomplete="current-password" maxlength="8" placeholder="ตัวเลข 4–8 หลัก" ${busyNow ? 'disabled' : ''}></label>
+        <button class="lg-go" type="submit" ${busyNow ? 'disabled' : ''}>${busyNow ? 'กำลังเข้าสู่ระบบ…' : 'เข้าสู่ระบบ'}</button>
+      </form>
+      <div class="lg-note">ยังไม่มีรหัสหรือลืม PIN? ติดต่อผู้ดูแลระบบ (Super admin)</div></div>`;
+    if (busyNow) return;
+    const f = document.getElementById('lgForm');
+    f.onsubmit = ev => { ev.preventDefault(); const e = document.getElementById('lgEmp').value.trim(), p = document.getElementById('lgPin').value.trim(); doLogin(e, p); };
+    setTimeout(() => { const i = document.getElementById(emp ? 'lgPin' : 'lgEmp'); if (i) i.focus(); }, 0);
+  }
+  let resolveBoot = null;
+  async function doLogin(emp, pin) {
+    if (!emp || !pin) { loginView('กรอกรหัสพนักงานและ PIN', emp); return; }
+    loginView('', emp, true);
+    try {
+      const r = await call('login', { emp: emp, pin: pin });
+      token = r.token; try { localStorage.setItem(TK, token); localStorage.setItem('uno_last_emp', emp); } catch (e) {}
+      apply(r); enter();
+    } catch (e) { loginView(e.message, emp); }
+  }
+  function enter() {
+    document.getElementById('login').innerHTML = '';
+    document.body.classList.remove('locked');
+    startPoll();
+    if (resolveBoot) { const r = resolveBoot; resolveBoot = null; r(); }
+  }
+  window.__UNO_BEFORE_BOOT = () => new Promise(res => {
+    resolveBoot = res;
+    let last = ''; try { last = localStorage.getItem('uno_last_emp') || ''; } catch (e) {}
+    if (!API) { loginView('ยังไม่ได้ตั้งค่าเซิร์ฟเวอร์: ใส่ลิงก์ Web app (…/exec) ในไฟล์ config.js', last); return; }
+    if (!token) { loginView('', last); return; }
+    loginView('', last, true);
+    call('load').then(r => { apply(r); enter(); }).catch(e => { token = null; try { localStorage.removeItem(TK); } catch (x) {} loginView(e.auth ? '' : e.message, last); });
+  });
+})();
+</script>
+<script>
+const BASE_EMPS = [];
 /* ================= helpers ================= */
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -551,6 +698,7 @@ function parseDateAny(v) {
 }
 function realGet(id, di) { const k = key(id, di); if (PENDING.has(k)) return PENDING.get(k); return CACHE.get(k) || null; }
 function eff(e, di) { const a = get(e.id, di); if (!a || !WORK(a.s)) return null; return a.b || e.bcode; }
+const WEBAPP = !!window.__UNO_WEBAPP;
 const SUP = () => S.isOwner || S.role === 'super';
 const ROLES = { super: 'Super admin', admin: 'Admin', viewer: 'ดูอย่างเดียว' };
 const editableMode = () => S.mode === 'db-edit' || S.mode === 'local';
@@ -601,7 +749,7 @@ function accUsers(a) {
 }
 function myAcc() {
   const em = S.myEmail;
-  return accUsers(S.access).find(u => (u.uid && S.myId && u.uid === S.myId) || (em && u.email && u.email.trim().toLowerCase() === em)) || null;
+  return accUsers(S.access).find(u => (WEBAPP && u.emp && S.myId && String(u.emp).trim() === String(S.myId)) || (u.uid && S.myId && u.uid === S.myId) || (em && u.email && u.email.trim().toLowerCase() === em)) || null;
 }
 function scope() {
   const me = S.isOwner ? null : myAcc();
@@ -765,7 +913,7 @@ function fixBranch() {
   S.branch = (S.mode !== 'local' && !SUP() && mine.length) ? mine[0] : (BRANCHES.find(b => b.code === 'CLP') || BRANCHES[0] || {}).code;
 }
 function scopeText() {
-  const ss = S.mode !== 'local' && store.get('uno_session'); const who = ss && ss.emp && EMP[ss.emp] ? (EMP[ss.emp].nick || EMP[ss.emp].name) + ' · ' : '';
+  const ss = S.mode !== 'local' && (WEBAPP ? { emp: S.myId } : store.get('uno_session')); const who = ss && ss.emp && EMP[ss.emp] ? (EMP[ss.emp].nick || EMP[ss.emp].name) + ' · ' : '';
   return who + scopeText0();
 }
 function scopeText0() {
@@ -809,7 +957,7 @@ function banner() {
   return '';
 }
 function sessOk() {
-  if (S.mode === 'local') return true;
+  if (S.mode === 'local' || WEBAPP) return true;
   const ss = store.get('uno_session');
   if (!(ss && ss.uid === (S.myId || 'anon'))) return false;
   if (ss.owner) return S.isOwner;
@@ -1489,26 +1637,66 @@ function adminAccess() {
   setTimeout(() => { if (!USER || !USER.profiles || !uids.length) return; USER.profiles(uids).then(p => uids.forEach(id => { document.querySelectorAll(`[data-nm="${CSS.escape(id)}"]`).forEach(el => { el.textContent = 'บัญชี: ' + ((p && p[id] && p[id].name) || 'สมาชิก'); }); })).catch(() => {}); }, 0);
   const me = S.isOwner ? 'เจ้าของไฟล์' : (ROLES[S.role] || '');
   return `<div class="pad" style="display:grid;gap:12px">
-    <div class="note" style="display:grid;gap:4px"><b>ผู้ใช้งานและสิทธิ์</b>
+    ${WEBAPP ? `<div class="note" style="display:grid;gap:4px"><b>ผู้ใช้งานและสิทธิ์</b>
+      <span>กด <b>+ เพิ่มผู้ใช้</b> ใส่รหัสพนักงาน (ชื่อขึ้นเอง) ตั้ง PIN 4–8 หลัก เลือกสิทธิ์ แล้วกด <b>บันทึกสิทธิ์</b> · ส่งลิงก์เว็บ + รหัส + PIN ให้คนนั้นเข้าใช้ได้เลย</span>
+      <span><b>Super admin</b> ดูและแก้ได้ทุกอย่าง รวมหน้าตั้งค่า · <b>Admin</b> แก้ได้เฉพาะตารางกะและบันทึกวันลา ของสาขาที่ติ๊ก · <b>ดูอย่างเดียว</b> ดูได้อย่างเดียว</span>
+      <span class="muted">PIN เก็บแบบเข้ารหัส ดูย้อนหลังไม่ได้ ลืม PIN ให้ตั้งใหม่ · ใส่ PIN ผิด 5 ครั้งจะล็อก 15 นาที</span></div>` : `<div class="note" style="display:grid;gap:4px"><b>ผู้ใช้งานและสิทธิ์</b>
       <span>1) กด <b>Share</b> มุมบนขวาของหน้านี้ (บน claude.ai) เชิญอีเมลของคนนั้น ตั้งเป็น <b>Can edit</b> ถ้าให้แก้ หรือ <b>Can view</b> ถ้าให้ดูอย่างเดียว</span>
       <span>2) กด <b>+ เพิ่มผู้ใช้</b> ใส่รหัสพนักงาน (ชื่อจะขึ้นเอง) และอีเมลที่ใช้เข้า claude.ai แล้วเลือกสิทธิ์</span>
       <span><b>Super admin</b> ดูและแก้ได้ทุกอย่าง รวมหน้าตั้งค่า · <b>Admin</b> แก้ได้เฉพาะตารางกะและบันทึกวันลา ของสาขาที่ติ๊ก · <b>ดูอย่างเดียว</b> ดูได้อย่างเดียว</span>
-      <span class="muted">ถ้าระบบอ่านอีเมลของผู้ใช้ไม่ได้ (บางองค์กรปิดไว้) ให้ใช้ช่อง "ผูกบัญชี" ค้นหาชื่อแทน · คุณเข้าใช้ในฐานะ ${esc(me)}</span></div>
+      <span class="muted">ถ้าระบบอ่านอีเมลของผู้ใช้ไม่ได้ (บางองค์กรปิดไว้) ให้ใช้ช่อง "ผูกบัญชี" ค้นหาชื่อแทน · คุณเข้าใช้ในฐานะ ${esc(me)}</span></div>`}
+    ${SUP() ? `<div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="bkexport">สำรองข้อมูลทั้งหมด (.json)</button>${WEBAPP ? '<label class="btn sm" for="bkIn" tabindex="0">นำเข้าข้อมูลสำรอง</label><input type="file" id="bkIn" accept=".json" hidden>' : ''}</div>` : ''}
     <div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn primary" data-act="accadd">+ เพิ่มผู้ใช้</button><input class="input" id="accFind" placeholder="ค้นหาในรายการ (รหัส ชื่อ อีเมล)" value="${esc(S.accQ || '')}" style="max-width:280px"></div>
     ${L.length ? '' : '<div class="muted small">ยังไม่มีผู้ใช้ในรายการ (เจ้าของไฟล์แก้ได้ทุกอย่างอยู่แล้ว)</div>'}
     ${L.map((u, i) => { const q = (S.accQ || '').trim().toLowerCase(); const e = EMP[u.emp]; if (q && ![u.emp, u.email, e && e.name, e && e.nick].join(' ').toLowerCase().includes(q)) return ''; const ch = u.branches || []; const bad = u.emp && !e;
       return `<div class="acc"><div class="er" style="flex-wrap:wrap;gap:8px">
         <input class="input" style="width:110px" data-accf="${i}|emp" value="${esc(u.emp || '')}" placeholder="รหัสพนักงาน">
         <span style="min-width:120px"><b>${e ? esc(e.name) : (bad ? '<span style="color:var(--bad)">ไม่พบรหัสนี้</span>' : '<span class="muted">ใส่รหัส</span>')}</b>${e ? `<span class="sub"> ${esc(e.pos || '')} · ${esc(e.bcode || '')}</span>` : ''}</span>
-        <input class="input" style="flex:1;min-width:180px" type="email" data-accf="${i}|email" value="${esc(u.email || '')}" placeholder="อีเมลที่ใช้เข้า claude.ai">
+        ${WEBAPP ? `<input class="input" style="flex:1;min-width:160px" inputmode="numeric" maxlength="8" data-accf="${i}|pin" value="${esc(u.pin || '')}" placeholder="${u.hasPin ? 'มี PIN แล้ว · พิมพ์เพื่อเปลี่ยน' : 'ตั้ง PIN 4–8 หลัก'}">` : `<input class="input" style="flex:1;min-width:180px" type="email" data-accf="${i}|email" value="${esc(u.email || '')}" placeholder="อีเมลที่ใช้เข้า claude.ai">`}
         <select class="pick" data-accrole="${i}">${Object.keys(ROLES).map(r => `<option value="${r}" ${(u.role || 'admin') === r ? 'selected' : ''}>${ROLES[r]}</option>`).join('')}</select>
         <button class="btn sm danger" data-accrm="${i}">ลบ</button></div>
-        <div class="small muted" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${u.uid ? `<span data-nm="${esc(u.uid)}">ผูกบัญชีแล้ว</span><button class="linkbtn" data-accunlink="${i}">ยกเลิกการผูก</button>` : `<span>ผูกบัญชี (ไม่บังคับ):</span><div class="search" style="min-width:220px"><input class="input" data-accsearch="${i}" placeholder="พิมพ์ชื่อในองค์กร…" autocomplete="off"><div class="sres" data-accres="${i}" hidden></div></div>`}</div>
+        ${WEBAPP ? '' : `<div class="small muted" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">${u.uid ? `<span data-nm="${esc(u.uid)}">ผูกบัญชีแล้ว</span><button class="linkbtn" data-accunlink="${i}">ยกเลิกการผูก</button>` : `<span>ผูกบัญชี (ไม่บังคับ):</span><div class="search" style="min-width:220px"><input class="input" data-accsearch="${i}" placeholder="พิมพ์ชื่อในองค์กร…" autocomplete="off"><div class="sres" data-accres="${i}" hidden></div></div>`}</div>`}
         ${u.role === 'admin' || !u.role ? `<div class="presets"><span class="small muted">สาขาที่แก้ได้ ${ch.length}:</span>${zones.map((z, zi) => `<button data-accz="${i}|${zi}">${esc(z[0])}</button>`).join('')}<button data-accz="${i}|clear">ล้าง</button></div>
         <div class="bxgrid">${BRANCHES.map(b => `<label class="bx"><input type="checkbox" data-acccb="${i}|${esc(b.code)}" ${ch.indexOf(b.code) >= 0 ? 'checked' : ''}><span>${esc(b.code)} ${esc(b.name)}</span></label>`).join('')}</div>` : `<div class="small muted">${u.role === 'super' ? 'ทุกสาขา ทุกหน้า รวมตั้งค่า' : 'ดูได้ทุกสาขา แก้ไม่ได้'}</div>`}</div>`; }).join('')}
     <div class="row end"><button class="btn" data-act="accreset">ยกเลิกการแก้</button><button class="btn primary" data-act="accsave">บันทึกสิทธิ์</button></div></div>`;
 }
+async function exportAll() {
+  if (!DB || !DL) { toast('สำรองข้อมูลได้เมื่อเชื่อมต่อฐานข้อมูลแล้ว'); return; }
+  toast('กำลังรวบรวมข้อมูล…');
+  const out = { app: 'uno-shift', v: 1, at: Date.now(), docs: {} };
+  for (const p of ['config/master', 'config/access']) { try { const s = await DB.doc(p).get(); if (s.exists) out.docs[p] = s.data(); } catch (e) {} }
+  for (const c of ['sched', 'offday']) {
+    await new Promise(res => { let done = false, un = null; const fin = () => { if (done) return; done = true; try { un && un(); } catch (e) {} res(); };
+      try { un = DB.collection(c).onSnapshot(snap => { snap.docs.forEach(d => { out.docs[c + '/' + d.id] = d.data(); }); setTimeout(fin, 0); }, fin); } catch (e) { fin(); } setTimeout(fin, 10000); });
+  }
+  try { await DL.save({ filename: 'UNO_สำรองข้อมูล_' + D.f(new Date()) + '.json', data: new TextEncoder().encode(JSON.stringify(out)) }); toast('สำรองข้อมูลแล้ว ' + Object.keys(out.docs).length + ' รายการ'); }
+  catch (e) { if (!(e && e.code === 'declined')) toast('ดาวน์โหลดไม่สำเร็จ'); }
+}
+function importAll(file) {
+  const r = new FileReader();
+  r.onload = () => {
+    let j; try { j = JSON.parse(r.result); } catch (e) { toast('ไฟล์ไม่ถูกต้อง'); return; }
+    if (!j || j.app !== 'uno-shift' || !j.docs) { toast('ไม่ใช่ไฟล์สำรองของระบบนี้'); return; }
+    const n = Object.keys(j.docs).length;
+    openSheet(`<h3>นำเข้าข้อมูลสำรอง</h3><p>พบ ${n} รายการ (ตารางกะ วันหยุด พนักงาน การตั้งค่า) ข้อมูลเดิมที่ชื่อซ้ำจะถูกแทนที่ · รายชื่อผู้ใช้และ PIN ในระบบนี้จะไม่ถูกแตะ</p><div class="row end"><button class="btn" data-act="close">ยกเลิก</button><button class="btn primary" id="bkGo">นำเข้า</button></div>`, root => {
+      root.querySelector('#bkGo').onclick = async () => { closeSheet(); toast('กำลังนำเข้า…'); try { const c = await window.__unoImport(j.docs); toast('นำเข้าแล้ว ' + c + ' รายการ'); } catch (e) { toast('นำเข้าไม่สำเร็จ: ' + (e && e.message || e)); } };
+    });
+  };
+  r.readAsText(file);
+}
 function accSave() {
+  if (WEBAPP) {
+    const L = (S.accDraft || []).map(u => ({ emp: String(u.emp || '').trim(), pin: String(u.pin || '').trim(), hasPin: !!u.hasPin, role: u.role || 'admin', branches: u.role === 'admin' || !u.role ? (u.branches || []) : [] })).filter(u => u.emp);
+    const seen = {};
+    for (const u of L) {
+      if (seen[u.emp]) { toast('รหัสพนักงานซ้ำ: ' + u.emp); return; } seen[u.emp] = 1;
+      if (u.pin && !/^\d{4,8}$/.test(u.pin)) { toast('PIN ของ ' + u.emp + ' ต้องเป็นตัวเลข 4–8 หลัก'); return; }
+      if (!u.pin && !u.hasPin) { toast('ตั้ง PIN ให้ ' + u.emp + ' ก่อน'); return; }
+      if (!u.pin) delete u.pin; delete u.hasPin;
+    }
+    saveDoc('config/access', { users: L, at: Date.now() }, 'บันทึกผู้ใช้แล้ว').then(ok => { if (ok) S.accDraft = null; });
+    return;
+  }
   const L = (S.accDraft || []).map(u => ({ emp: (u.emp || '').trim(), email: (u.email || '').trim().toLowerCase(), uid: u.uid || '', role: u.role || 'admin', branches: u.role === 'admin' || !u.role ? (u.branches || []) : [] })).filter(u => u.emp || u.email || u.uid);
   const seen = {}; for (const u of L) { if (u.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(u.email)) { toast('อีเมลไม่ถูกต้อง: ' + u.email); return; } const k = u.email || u.uid; if (k && seen[k]) { toast('อีเมล/บัญชีซ้ำ: ' + k); return; } if (k) seen[k] = 1; if (!u.email && !u.uid) { toast('ใส่อีเมลหรือผูกบัญชีให้ ' + (u.emp || 'ผู้ใช้') + ' ก่อน'); return; } }
   const editors = {}; L.forEach(u => { if (u.uid && u.role === 'admin') editors[u.uid] = { branches: u.branches }; });
@@ -1854,7 +2042,8 @@ document.addEventListener('click', ev => {
     case 'nocf': S.confirm = null; render(); break;
     case 'accreset': S.accDraft = null; render(); break;
     case 'accsave': accSave(); break;
-    case 'logout': try { localStorage.removeItem('uno_session'); } catch (e) {} S.loginErr = ''; render(); scrollTo(0, 0); break;
+    case 'logout': if (WEBAPP) { window.__unoLogout(); break; } try { localStorage.removeItem('uno_session'); } catch (e) {} S.loginErr = ''; render(); scrollTo(0, 0); break;
+    case 'bkexport': exportAll(); break;
     case 'accadd': S.accDraft.unshift({ emp: '', email: '', uid: '', role: 'admin', branches: [] }); S.accQ = ''; render(); break;
     case 'stclear': S.draft.filter = ''; S.draft.fzone = ''; S.draft.fbr = ''; render(); break;
     case 'staffadd': { const dd = masterDraft(); dd.staff.unshift({ id: '', nick: '', name: '', bcode: dd.fbr || S.branch, pos: 'Barista', cond: 'ไม่มี', active: true }); dd.filter = ''; if (!dd.fbr) dd.fzone = ''; render(); break; }
@@ -1869,6 +2058,7 @@ document.addEventListener('click', ev => {
 });
 document.addEventListener('change', ev => {
   const t = ev.target, d = t.dataset;
+  if (t.id === 'bkIn') { const f = t.files && t.files[0]; t.value = ''; if (f) importAll(f); return; }
   if (t.id === 'xlsIn') { const f = t.files && t.files[0]; t.value = ''; if (f) importStaff(f); return; }
   const tog = (arr, v) => { const i = arr.indexOf(v); if (t.checked && i < 0) arr.push(v); if (!t.checked && i >= 0) arr.splice(i, 1); };
   if (d.cdg) { const [i, g] = d.cdg.split('|'); tog(S.draft.conds[+i].groups, g); return; }
@@ -1893,7 +2083,7 @@ document.addEventListener('input', ev => {
 document.addEventListener('keydown', ev => { if (ev.key === 'Escape') closeSheet(); });
 addEventListener('beforeunload', () => { if (PENDING.size) flush(); });
 
-boot();
+(window.__UNO_BEFORE_BOOT ? window.__UNO_BEFORE_BOOT() : Promise.resolve()).then(boot);
 </script>
 </body>
 </html>
