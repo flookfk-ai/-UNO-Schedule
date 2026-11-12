@@ -18,8 +18,24 @@ function doPost(e) {
   const body = e && e.postData ? e.postData.contents : '';
   return ContentService.createTextOutput(api(body)).setMimeType(ContentService.MimeType.JSON);
 }
-function doGet() {
+function doGet(e) {
+  // คำขอขนาดเล็กส่งมาทาง GET ได้ด้วย (?p=...) ใช้เป็นทางสำรองเมื่อ POST ใช้ไม่ได้
+  if (e && e.parameter && e.parameter.p) return ContentService.createTextOutput(api(e.parameter.p)).setMimeType(ContentService.MimeType.JSON);
   return ContentService.createTextOutput(JSON.stringify({ ok: true, app: 'UNO ตารางกะ API' })).setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * ทดสอบเซิร์ฟเวอร์: เลือกฟังก์ชัน testServer ด้านบนแล้วกด Run
+ * ครั้งแรก Google จะขอสิทธิ์ (Review permissions → เลือกบัญชี → Advanced → Go to … → Allow)
+ * ดูผลที่ Execution log ด้านล่าง ต้องขึ้น "พร้อมใช้งาน"
+ */
+function testServer() {
+  if (!SpreadsheetApp.getActiveSpreadsheet()) { console.log('❌ สคริปต์นี้ต้องสร้างจากเมนู ส่วนขยาย → Apps Script ของ Google Sheet (ไม่ใช่สร้างจาก script.google.com โดยตรง)'); return; }
+  if (!OWNER_PIN) { console.log('❌ ยังไม่ได้ตั้ง OWNER_PIN'); return; }
+  const r = JSON.parse(api(JSON.stringify({ op: 'login', args: { emp: String(OWNER_EMP), pin: String(OWNER_PIN) } })));
+  if (r.error) { console.log('❌ ' + r.error); return; }
+  props().deleteProperty('tok_' + r.token);
+  console.log('✅ พร้อมใช้งาน · ข้อมูลในระบบ ' + Object.keys(r.docs || {}).length + ' รายการ · อย่าลืม Deploy → Manage deployments → New version');
 }
 
 // ---------- จุดเรียกเดียวจากหน้าเว็บ ----------

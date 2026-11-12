@@ -351,13 +351,22 @@ window.__UNO_WEBAPP = true;
   const clone = o => o == null ? o : JSON.parse(JSON.stringify(o));
 
   const API = (window.UNO_API_URL || '').trim();
+  async function send(body) {
+    try {
+      const res = await fetch(API, { method: 'POST', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body });
+      return await res.text();
+    } catch (e) {
+      // ทางสำรอง: ส่งทาง GET (ใช้ได้กับคำขอขนาดเล็ก เช่น เข้าสู่ระบบ บันทึกกะ)
+      if (body.length > 6000) throw e;
+      const res = await fetch(API + (API.indexOf('?') >= 0 ? '&' : '?') + 'p=' + encodeURIComponent(body), { method: 'GET', redirect: 'follow' });
+      return await res.text();
+    }
+  }
   async function call(op, args) {
     if (!API) throw new Error('ยังไม่ได้ตั้งค่า UNO_API_URL ในไฟล์ config.js');
     let t;
-    try {
-      const res = await fetch(API, { method: 'POST', redirect: 'follow', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ op: op, token: token, args: args || {} }) });
-      t = await res.text();
-    } catch (e) { throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ · ลองเปิดลิงก์ใน config.js โดยตรง ต้องเห็น {"ok":true} ถ้าเห็นหน้าล็อกอิน Google หรือหน้า error ให้ Deploy ใหม่เป็น Web app แบบ Anyone (New version)'); }
+    try { t = await send(JSON.stringify({ op: op, token: token, args: args || {} })); }
+    catch (e) { throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่ได้ · ให้ผู้ดูแลเปิด Apps Script แล้วรันฟังก์ชัน testServer (อนุญาตสิทธิ์ถ้า Google ถาม) จากนั้น Deploy → Manage deployments → New version'); }
     let r; try { r = JSON.parse(t); } catch (e) { throw new Error('เซิร์ฟเวอร์ตอบกลับไม่ถูกต้อง (ตรวจว่า Deploy เป็น Web app แบบ Anyone แล้ว)'); }
     if (r.error) { const e = new Error(r.error); e.auth = r.auth; if (r.auth && op !== 'login' && op !== 'load') expired(r.error); throw e; }
     return r;
